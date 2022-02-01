@@ -39,7 +39,8 @@ const SalesGraphics = () => {
         productNameOption02: "Produtos 02",
         valueOption02: "produto02",
       });
-    } else {
+    } 
+    if (categories === "categoria02") {
       setProducts({
         productNameOption01: "Produtos 03",
         valueOption01: "produto03",
@@ -49,6 +50,112 @@ const SalesGraphics = () => {
     }
   }, [categories]);
   
+  useEffect(() => {
+    if (products.valueOption01 === "produto01") {
+      if (blands.valueBlandOption01 === "marca-a") {
+        setSales({
+          saleJan: "4",
+          saleFev: "6",
+          saleMar: "2",
+          saleAbr: "8",
+        })
+      }
+      if (blands.valueBlandOption02 === "marca-b") {
+        setSales({
+          saleJan: "1",
+          saleFev: "9",
+          saleMar: "3",
+          saleAbr: "6",
+        })
+      }
+      if (blands.valueBlandOption03 === "marca-c") {
+        setSales({
+          saleJan: "7",
+          saleFev: "3",
+          saleMar: "1",
+          saleAbr: "9",
+        })
+      }
+    }
+    if (products.valueOption02 === "produto02") {
+      if (blands.valueBlandOption01 === "marca-d") {
+        setSales({
+          saleJan: "9",
+          saleFev: "3",
+          saleMar: "7",
+          saleAbr: "5",
+        })
+      }
+      if (blands.valueBlandOption02 === "marca-e") {
+        setSales({
+          saleJan: "3",
+          saleFev: "7",
+          saleMar: "9",
+          saleAbr: "8",
+        })
+      }
+      if (blands.valueBlandOption03 === "marca-f") {
+        setSales({
+          saleJan: "9",
+          saleFev: "4",
+          saleMar: "7",
+          saleAbr: "3",
+        })
+      }
+    }
+    if (products.valueOption01 === "produto03") {
+      if (blands.valueBlandOption01 === "marca-g") {
+        setSales({
+          saleJan: "3",
+          saleFev: "9",
+          saleMar: "8",
+          saleAbr: "7",
+        })
+      }
+      if (blands.valueBlandOption02 === "marca-h") {
+        setSales({
+          saleJan: "6",
+          saleFev: "3",
+          saleMar: "2",
+          saleAbr: "1",
+        })
+      }
+      if (blands.valueBlandOption03 === "marca-i") {
+        setSales({
+          saleJan: "2",
+          saleFev: "6",
+          saleMar: "5",
+          saleAbr: "7",
+        })
+      }
+    }
+    if (products.valueOption02 === "produto04") {
+      if (blands.valueBlandOption01 === "marca-j") {
+        setSales({
+          saleJan: "11",
+          saleFev: "15",
+          saleMar: "13",
+          saleAbr: "10",
+        })
+      }
+      if (blands.valueBlandOption02 === "marca-k") {
+        setSales({
+          saleJan: "4",
+          saleFev: "4",
+          saleMar: "9",
+          saleAbr: "2",
+        })
+      }
+      if (blands.valueBlandOption03 === "marca-l") {
+        setSales({
+          saleJan: "2",
+          saleFev: "9",
+          saleMar: "3",
+          saleAbr: "12",
+        })
+      }
+    }
+  }, [products, blands]);
 
   const handleChangeCategories = ({ value }) => {
     if (value === "categoria01") {
