@@ -226,7 +226,6 @@ const SalesGraphics = () => {
 
   return (
     <>
-      <h1> Iniciando o Desafio Técnico</h1>
       <section className='container-selects'>
         <div className='categories'>
           <label htmlFor="categorias">
@@ -286,8 +285,9 @@ const SalesGraphics = () => {
           </label>
         </div>
       </section>
-      <section>
-      <XYPlot margin={{bottom: 70}} xType="ordinal" width={300} height={300}>
+      <section className='graphic-container'>
+      <h3>Sales By Month for:</h3>
+      <XYPlot margin={{bottom: 70}} xType="ordinal" width={900} height={600}>
         <VerticalGridLines />
         <HorizontalGridLines />
         <XAxis tickLabelAngle={-45} />
