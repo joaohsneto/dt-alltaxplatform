@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {
+  XYPlot,
+  XAxis,
+  YAxis,
+  VerticalGridLines,
+  HorizontalGridLines,
+  VerticalBarSeries
+} from 'react-vis';
 
 const SalesGraphics = () => {
   const [categories, setCategories] = useState("categoria01");
@@ -8,6 +16,20 @@ const SalesGraphics = () => {
     productNameOption02: "Produtos 02",
     valueOption02: "produto02",
   });
+  const [sales, setSales] = useState({
+    saleJan: "04",
+    saleFev: "06",
+    saleMar: "02",
+    saleAbr: "10",
+  });
+  const [blands, setBlands] = useState({
+    blandNameOption01: "Marca A",
+    valueBlandOption01: "marca-a",
+    blandNameOption02: "Marca B",
+    valueBlandOption02: "marca-b",
+    blandNameOption03: "Marca C",
+    valueBlandOption03: "marca-c",
+})
 
   useEffect(() => {
     if (categories === "categoria01") {
@@ -26,6 +48,7 @@ const SalesGraphics = () => {
       });
     }
   }, [categories]);
+  
 
   const handleChangeCategories = ({ value }) => {
     if (value === "categoria01") {
@@ -36,6 +59,170 @@ const SalesGraphics = () => {
     }
   }
   console.log(categories);
+
+  const handleChangeProducts = ({ value }) => {
+    if (value === "produto01") {
+      setBlands({
+        blandNameOption01: "Marca A",
+        valueBlandOption01: "marca-a",
+        blandNameOption02: "Marca B",
+        valueBlandOption02: "marca-b",
+        blandNameOption03: "Marca C",
+        valueBlandOption03: "marca-c",
+      });
+    }
+    if (value === "produto02") {
+      setBlands({
+        blandNameOption01: "Marca D",
+        valueBlandOption01: "marca-d",
+        blandNameOption02: "Marca E",
+        valueBlandOption02: "marca-e",
+        blandNameOption03: "Marca F",
+        valueBlandOption03: "marca-f",
+      });
+    }
+    if (value === "produto03") {
+      setBlands({
+        blandNameOption01: "Marca G",
+        valueBlandOption01: "marca-g",
+        blandNameOption02: "Marca H",
+        valueBlandOption02: "marca-h",
+        blandNameOption03: "Marca I",
+        valueBlandOption03: "marca-i",
+      });
+    }
+    if (value === "produto04") {
+      setBlands({
+        blandNameOption01: "Marca J",
+        valueBlandOption01: "marca-j",
+        blandNameOption02: "Marca K",
+        valueBlandOption02: "marca-k",
+        blandNameOption03: "Marca L",
+        valueBlandOption03: "marca-l",
+      });
+    }
+  }
+
+  const handleChangeblands = ({ value }) => {
+    switch (value) {
+      case "marca-a":
+        setSales({
+          saleJan: "4",
+          saleFev: "6",
+          saleMar: "2",
+          saleAbr: "8",
+        })
+        break;
+      
+      case "marca-b":
+        setSales({
+          saleJan: "1",
+          saleFev: "9",
+          saleMar: "3",
+          saleAbr: "6",
+        })
+        break;
+      
+      case "marca-c":
+        setSales({
+          saleJan: "7",
+          saleFev: "3",
+          saleMar: "1",
+          saleAbr: "9",
+        })
+        break;
+      
+      case "marca-d":
+        setSales({
+          saleJan: "9",
+          saleFev: "3",
+          saleMar: "7",
+          saleAbr: "5",
+        })
+        break;
+
+      case "marca-e":
+        setSales({
+          saleJan: "3",
+          saleFev: "7",
+          saleMar: "9",
+          saleAbr: "8",
+        })
+        break;
+
+      case "marca-f":
+        setSales({
+          saleJan: "9",
+          saleFev: "4",
+          saleMar: "7",
+          saleAbr: "3",
+        })
+        break;
+
+      case "marca-g":
+        setSales({
+          saleJan: "3",
+          saleFev: "9",
+          saleMar: "8",
+          saleAbr: "7",
+        })
+        break;
+
+      case "marca-h":
+        setSales({
+          saleJan: "6",
+          saleFev: "3",
+          saleMar: "2",
+          saleAbr: "1",
+        })
+        break;
+
+      case "marca-i":
+        setSales({
+          saleJan: "2",
+          saleFev: "6",
+          saleMar: "5",
+          saleAbr: "7",
+        })
+        break;
+
+      case "marca-j":
+        setSales({
+          saleJan: "11",
+          saleFev: "15",
+          saleMar: "13",
+          saleAbr: "10",
+        })
+        break;
+
+      case "marca-k":
+        setSales({
+          saleJan: "4",
+          saleFev: "4",
+          saleMar: "9",
+          saleAbr: "2",
+        })
+        break;
+
+      case "marca-l":
+        setSales({
+          saleJan: "2",
+          saleFev: "9",
+          saleMar: "3",
+          saleAbr: "12",
+        })
+        break;
+    
+      default:
+        setSales({
+          saleJan: "4",
+          saleFev: "6",
+          saleMar: "2",
+          saleAbr: "7",
+        })
+        break;
+    }
+  }
 
   return (
     <>
@@ -56,7 +243,10 @@ const SalesGraphics = () => {
         <div className='products'>
           <label htmlFor="Produtos:">
             Produtos: 
-          <select name="produtos">
+          <select
+            name="produtos"
+            onChange={ ({ target }) => handleChangeProducts(target) }
+          >
             <option
             value={ products.valueOption01 }
             >
@@ -73,13 +263,44 @@ const SalesGraphics = () => {
         <div className='brands'>
           <label htmlFor="marcas">
             Marcas: 
-          <select name="marcas">
-            <option value="marca01">Marca 01</option>
-            <option value="marca02">Marca 02</option>
-            <option value="marca03">Marca 03</option>
+          <select
+            name="marcas"
+            onChange={ ({ target }) => handleChangeblands(target)}
+          >
+            <option 
+              value={ blands.valueBlandOption01 }
+            >
+              { blands.blandNameOption01 }
+            </option>
+            <option
+              value={ blands.valueBlandOption02 }
+            >
+              { blands.blandNameOption02 }
+            </option>
+            <option
+              value={ blands.valueBlandOption03 }
+            >
+              { blands.blandNameOption03 }
+            </option>
           </select>
           </label>
         </div>
+      </section>
+      <section>
+      <XYPlot margin={{bottom: 70}} xType="ordinal" width={300} height={300}>
+        <VerticalGridLines />
+        <HorizontalGridLines />
+        <XAxis tickLabelAngle={-45} />
+        <YAxis />
+        <VerticalBarSeries
+          data={[
+            {x: 'Janeiro', y: sales.saleJan},
+            {x: 'Fevereiro', y: sales.saleFev},
+            {x: 'Março', y: sales.saleMar},
+            {x: 'Abril', y: sales.saleAbr},
+          ]}
+        />
+      </XYPlot>
       </section>
     </>
   )
