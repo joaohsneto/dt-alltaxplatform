@@ -58,7 +58,6 @@ const SalesGraphics = () => {
       setCategories("categoria02");
     }
   }
-  console.log(categories);
 
   const handleChangeProducts = ({ value }) => {
     if (value === "produto01") {
